@@ -1,7 +1,12 @@
 <template>
   <div>
     <!-- Beverage Mug Display -->
-    <Beverage :isIced="beverageStore.selectedTemperature === 'Cold'" />
+    <Beverage
+      :isIced="beverageStore.selectedTemperature === 'Cold'"
+      :base="beverageStore.selectedBase.name"
+      :syrup="beverageStore.selectedSyrup.name"
+      :creamer="beverageStore.selectedCreamer.name"
+    />
 
     <!-- Temperature Toggle -->
     <ul>
@@ -34,9 +39,11 @@
     <!-- Saved Beverage List -->
     <div id="beverage-container" style="margin-top: 20px">
       <h3>Saved Beverages:</h3>
+
       <div v-if="beverageStore.beverages.length === 0">
         <em>No beverages saved yet.</em>
       </div>
+
       <ul v-else>
         <li
           v-for="drink in beverageStore.beverages"
