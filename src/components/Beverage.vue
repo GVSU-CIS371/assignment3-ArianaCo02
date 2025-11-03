@@ -1,11 +1,12 @@
 <template>
   <div>
+    <!-- Mug display -->
     <div class="mug">
- 
+      <slot />
     </div>
 
-    
-    <div>
+    <!-- Temperature selection -->
+    <div class="options">
       <label v-for="temp in beverageStore.temperatures" :key="temp">
         <input
           type="radio"
@@ -16,8 +17,8 @@
       </label>
     </div>
 
-    <!-- Base Options -->
-    <div>
+    <!-- Base selection -->
+    <div class="options">
       <label v-for="b in beverageStore.bases" :key="b.id">
         <input
           type="radio"
@@ -28,8 +29,8 @@
       </label>
     </div>
 
-    <!-- Syrup Options -->
-    <div>
+    <!-- Syrup selection -->
+    <div class="options">
       <label v-for="s in beverageStore.syrups" :key="s.id">
         <input
           type="radio"
@@ -40,8 +41,8 @@
       </label>
     </div>
 
-    <!-- Creamer Options -->
-    <div>
+    <!-- Creamer selection -->
+    <div class="options">
       <label v-for="c in beverageStore.creamers" :key="c.id">
         <input
           type="radio"
@@ -58,3 +59,19 @@
 import { useBeverageStore } from "../stores/beverageStore";
 const beverageStore = useBeverageStore();
 </script>
+
+<style scoped>
+.mug {
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+}
+
+.options {
+  margin: 10px 0;
+}
+
+label {
+  margin-right: 10px;
+}
+</style>
